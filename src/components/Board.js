@@ -25,7 +25,7 @@ const Board = ({ squares, onClickCallback, gameStatus }) => {
     onClickCallback,
     gameStatus
   );
-  console.log(squareList);
+  // console.log(squareList);
   return <div className="grid">{squareList}</div>;
 };
 
@@ -39,7 +39,7 @@ Board.propTypes = {
     )
   ),
   onClickCallback: PropTypes.func.isRequired,
-  gameStatus: PropTypes.bool.isRequired,
+  gameStatus: PropTypes.bool,
 };
 
 export default Board;

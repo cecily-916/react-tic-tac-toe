@@ -4,8 +4,8 @@ import './App.css';
 
 import Board from './components/Board';
 
-const playerOne = 'X';
-const playerTwo = 'O';
+const playerOne = 'x';
+const playerTwo = 'o';
 
 const generateSquares = () => {
   const squares = [];
@@ -22,7 +22,7 @@ const generateSquares = () => {
       currentId += 1;
     }
   }
-  console.log(squares);
+  // console.log(squares);
   return squares;
 };
 
@@ -51,10 +51,6 @@ const App = () => {
       });
     });
   };
-
-  // const handleWinner = () => {
-  //   setGameStatus(winner ? true : false);
-  // };
 
   const checkForWinner = () => {
     let i = 0;
@@ -107,7 +103,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>The winner is ...{winner}</h2>
+        <h2>Winner is {winner}</h2>
         <h2>It&apos;s {player}&apos;s turn! </h2>
         <button onClick={resetGame}>Reset Game</button>
       </header>
