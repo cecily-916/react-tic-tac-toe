@@ -32,7 +32,7 @@ const App = () => {
   const [squares, setSquares] = useState(generateSquares());
   const [player, setPlayer] = useState(playerOne);
   const [isGameOver, setGameStatus] = useState(false);
-  let winner = '';
+  const [winner, setWinner] = useState('');
 
   const updateOnClick = (updatedSquare) => {
     const squaresData = squares.map((row) => {
@@ -40,21 +40,21 @@ const App = () => {
         if (square.id === updatedSquare.id) {
           if (square.value === '') {
             square.value = player;
-
+            const updatedWinner = checkForWinner();
+            if (updatedWinner) {
+              setWinner(updatedWinner);
+              setGameStatus(true);
+            }
             setPlayer(player === playerOne ? playerTwo : playerOne);
-
-            winner = checkForWinner();
-            console.log(winner);
-
-            setGameStatus(winner ? true : false);
           }
-          console.log('');
         }
-        return square;
       });
     });
-    console.log(squares);
   };
+
+  // const handleWinner = () => {
+  //   setGameStatus(winner ? true : false);
+  // };
 
   const checkForWinner = () => {
     let i = 0;
@@ -98,16 +98,16 @@ const App = () => {
 
   const resetGame = () => {
     setSquares(generateSquares());
+    setWinner('');
+    setGameStatus(false);
+    setPlayer(playerOne);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>
-          The winner is ...
-          {winner}
-        </h2>
+        <h2>The winner is ...{winner}</h2>
         <h2>Current player: {player} </h2>
         <button onClick={resetGame}>Reset Game</button>
       </header>
