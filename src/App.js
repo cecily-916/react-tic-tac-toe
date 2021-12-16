@@ -32,18 +32,21 @@ const App = () => {
   const [player, setPlayer] = useState(playerOne);
 
   const updateOnClick = (updatedSquare) => {
+    console.log(squares);
     const squaresData = squares.map((row) => {
       row.map((square) => {
         if (square.id === updatedSquare.id) {
-          square.value = player;
-          console.log('yes');
+          if (square.value === '') {
+            square.value = player;
+            setPlayer(player === playerOne ? playerTwo : playerOne);
+          }
+          console.log('');
           return square;
         }
         return square;
       });
     });
-    // setSquares(squaresData);
-    setPlayer(player === playerOne ? playerTwo : playerOne);
+    console.log(squares);
   };
 
   // Wave 2
