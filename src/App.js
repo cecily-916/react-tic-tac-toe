@@ -1,3 +1,4 @@
+import { check } from 'prettier';
 import React, { useState } from 'react';
 import './App.css';
 
@@ -30,18 +31,24 @@ const App = () => {
   // empty value and unique ids.
   const [squares, setSquares] = useState(generateSquares());
   const [player, setPlayer] = useState(playerOne);
+  const [isGameOver, setGameStatus] = useState(false);
+  let winner = '';
 
   const updateOnClick = (updatedSquare) => {
-    console.log(squares);
     const squaresData = squares.map((row) => {
       row.map((square) => {
         if (square.id === updatedSquare.id) {
           if (square.value === '') {
             square.value = player;
+
             setPlayer(player === playerOne ? playerTwo : playerOne);
+
+            winner = checkForWinner();
+            console.log(winner);
+
+            setGameStatus(winner ? true : false);
           }
           console.log('');
-          return square;
         }
         return square;
       });
@@ -51,7 +58,6 @@ const App = () => {
 
   const checkForWinner = () => {
     let i = 0;
-
     // Check all the rows and columns for a winner
     while (i < 3) {
       if (
@@ -98,12 +104,19 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
-        <h2>The winner is ... {checkForWinner()} </h2>
+        <h2>
+          The winner is ...
+          {winner}
+        </h2>
         <h2>Current player: {player} </h2>
         <button onClick={resetGame}>Reset Game</button>
       </header>
       <main>
-        <Board squares={squares} onClickCallback={updateOnClick} />
+        <Board
+          squares={squares}
+          onClickCallback={updateOnClick}
+          gameStatus={isGameOver}
+        />
       </main>
     </div>
   );
