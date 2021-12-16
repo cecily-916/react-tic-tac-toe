@@ -108,7 +108,7 @@ const App = () => {
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
         <h2>The winner is ...{winner}</h2>
-        <h2>Current player: {player} </h2>
+        <h2>It&apos;s {player}&apos;s turn! </h2>
         <button onClick={resetGame}>Reset Game</button>
       </header>
       <main>

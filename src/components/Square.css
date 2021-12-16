@@ -10,3 +10,8 @@
   align-items: center;
   margin: 2px;
 }
+
+.square:disabled {
+  background: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
+  ;
+}
