@@ -52,7 +52,7 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act-assert
-      clickButtonAndVerifyResult(container, 0, 'x');
+      clickButtonAndVerifyResult(container, 0, 'X');
     });
 
     test('Clicking on the 1st button makes it an "x" and the 2nd an "o"', () => {
@@ -60,8 +60,8 @@ describe('App', () => {
       const { container } = render(<App />);
 
       //Act-Assert
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 8, 'o');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 8, 'O');
     });
 
     test("clicking on the same square twice doesn't change things", () => {
@@ -73,7 +73,7 @@ describe('App', () => {
       fireEvent.click(buttons[0]);
 
       // after the click there should be a square with an "x"
-      let clickedButton = screen.getByText('x');
+      let clickedButton = screen.getByText('X');
       expect(clickedButton).toBeInTheDocument();
 
       buttons = container.querySelectorAll('.grid button');
@@ -81,31 +81,31 @@ describe('App', () => {
 
       // Assert
       // after the 2nd click there should still be a square with an "x"
-      clickedButton = screen.getByText('x');
+      clickedButton = screen.getByText('X');
       expect(clickedButton).toBeInTheDocument();
 
-      const xButtons = screen.queryAllByText('x');
+      const xButtons = screen.queryAllByText('X');
       expect(xButtons.length).toEqual(1);
-      const oButtons = screen.queryAllByText('o');
+      const oButtons = screen.queryAllByText('O');
       expect(oButtons.length).toEqual(0);
     });
   });
 
   describe('Wave 3:  Winner tests', () => {
-    describe('Prints "Winner is x" when x wins', () => {
+    describe('Prints "Winner is X" when X wins', () => {
       test('that a winner will be identified when 3 Xs get in a row across the top', () => {
         // Arrange
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 0, 'x');
-        clickButtonAndVerifyResult(container, 3, 'o');
-        clickButtonAndVerifyResult(container, 2, 'x');
-        clickButtonAndVerifyResult(container, 4, 'o');
-        clickButtonAndVerifyResult(container, 1, 'x');
+        clickButtonAndVerifyResult(container, 0, 'X');
+        clickButtonAndVerifyResult(container, 3, 'O');
+        clickButtonAndVerifyResult(container, 2, 'X');
+        clickButtonAndVerifyResult(container, 4, 'O');
+        clickButtonAndVerifyResult(container, 1, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -115,14 +115,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 3, 'x');
-        clickButtonAndVerifyResult(container, 1, 'o');
-        clickButtonAndVerifyResult(container, 5, 'x');
-        clickButtonAndVerifyResult(container, 2, 'o');
-        clickButtonAndVerifyResult(container, 4, 'x');
+        clickButtonAndVerifyResult(container, 3, 'X');
+        clickButtonAndVerifyResult(container, 1, 'O');
+        clickButtonAndVerifyResult(container, 5, 'X');
+        clickButtonAndVerifyResult(container, 2, 'O');
+        clickButtonAndVerifyResult(container, 4, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -131,14 +131,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 6, 'x');
-        clickButtonAndVerifyResult(container, 1, 'o');
-        clickButtonAndVerifyResult(container, 8, 'x');
-        clickButtonAndVerifyResult(container, 2, 'o');
-        clickButtonAndVerifyResult(container, 7, 'x');
+        clickButtonAndVerifyResult(container, 6, 'X');
+        clickButtonAndVerifyResult(container, 1, 'O');
+        clickButtonAndVerifyResult(container, 8, 'X');
+        clickButtonAndVerifyResult(container, 2, 'O');
+        clickButtonAndVerifyResult(container, 7, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -148,14 +148,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 3, 'x');
-        clickButtonAndVerifyResult(container, 1, 'o');
-        clickButtonAndVerifyResult(container, 6, 'x');
-        clickButtonAndVerifyResult(container, 2, 'o');
-        clickButtonAndVerifyResult(container, 0, 'x');
+        clickButtonAndVerifyResult(container, 3, 'X');
+        clickButtonAndVerifyResult(container, 1, 'O');
+        clickButtonAndVerifyResult(container, 6, 'X');
+        clickButtonAndVerifyResult(container, 2, 'O');
+        clickButtonAndVerifyResult(container, 0, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -164,14 +164,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 4, 'x');
-        clickButtonAndVerifyResult(container, 0, 'o');
-        clickButtonAndVerifyResult(container, 7, 'x');
-        clickButtonAndVerifyResult(container, 2, 'o');
-        clickButtonAndVerifyResult(container, 1, 'x');
+        clickButtonAndVerifyResult(container, 4, 'X');
+        clickButtonAndVerifyResult(container, 0, 'O');
+        clickButtonAndVerifyResult(container, 7, 'X');
+        clickButtonAndVerifyResult(container, 2, 'O');
+        clickButtonAndVerifyResult(container, 1, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -180,14 +180,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 2, 'x');
-        clickButtonAndVerifyResult(container, 0, 'o');
-        clickButtonAndVerifyResult(container, 5, 'x');
-        clickButtonAndVerifyResult(container, 1, 'o');
-        clickButtonAndVerifyResult(container, 8, 'x');
+        clickButtonAndVerifyResult(container, 2, 'X');
+        clickButtonAndVerifyResult(container, 0, 'O');
+        clickButtonAndVerifyResult(container, 5, 'X');
+        clickButtonAndVerifyResult(container, 1, 'O');
+        clickButtonAndVerifyResult(container, 8, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -197,14 +197,14 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 0, 'x');
-        clickButtonAndVerifyResult(container, 1, 'o');
-        clickButtonAndVerifyResult(container, 4, 'x');
-        clickButtonAndVerifyResult(container, 2, 'o');
-        clickButtonAndVerifyResult(container, 8, 'x');
+        clickButtonAndVerifyResult(container, 0, 'X');
+        clickButtonAndVerifyResult(container, 1, 'O');
+        clickButtonAndVerifyResult(container, 4, 'X');
+        clickButtonAndVerifyResult(container, 2, 'O');
+        clickButtonAndVerifyResult(container, 8, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
@@ -213,35 +213,35 @@ describe('App', () => {
         const { container } = render(<App />);
 
         // Act
-        clickButtonAndVerifyResult(container, 2, 'x');
-        clickButtonAndVerifyResult(container, 0, 'o');
-        clickButtonAndVerifyResult(container, 4, 'x');
-        clickButtonAndVerifyResult(container, 3, 'o');
-        clickButtonAndVerifyResult(container, 6, 'x');
+        clickButtonAndVerifyResult(container, 2, 'X');
+        clickButtonAndVerifyResult(container, 0, 'O');
+        clickButtonAndVerifyResult(container, 4, 'X');
+        clickButtonAndVerifyResult(container, 3, 'O');
+        clickButtonAndVerifyResult(container, 6, 'X');
 
         // Assert
-        const winnerScreen = screen.queryByText('Winner is x');
+        const winnerScreen = screen.queryByText('Winner is X');
         expect(winnerScreen).not.toBeNull();
         expect(winnerScreen).toBeInTheDocument();
       });
     });
   });
 
-  describe('Prints "Winner is o" when o wins', () => {
+  describe('Prints "Winner is O" when o wins', () => {
     test('that a winner will be identified when 3 os get in a row across the top', () => {
       // Arrange
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 3, 'x');
-      clickButtonAndVerifyResult(container, 0, 'o');
-      clickButtonAndVerifyResult(container, 4, 'x');
-      clickButtonAndVerifyResult(container, 1, 'o');
-      clickButtonAndVerifyResult(container, 6, 'x');
-      clickButtonAndVerifyResult(container, 2, 'o');
+      clickButtonAndVerifyResult(container, 3, 'X');
+      clickButtonAndVerifyResult(container, 0, 'O');
+      clickButtonAndVerifyResult(container, 4, 'X');
+      clickButtonAndVerifyResult(container, 1, 'O');
+      clickButtonAndVerifyResult(container, 6, 'X');
+      clickButtonAndVerifyResult(container, 2, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -251,15 +251,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 1, 'x');
-      clickButtonAndVerifyResult(container, 3, 'o');
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 4, 'o');
-      clickButtonAndVerifyResult(container, 8, 'x');
-      clickButtonAndVerifyResult(container, 5, 'o');
+      clickButtonAndVerifyResult(container, 1, 'X');
+      clickButtonAndVerifyResult(container, 3, 'O');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 4, 'O');
+      clickButtonAndVerifyResult(container, 8, 'X');
+      clickButtonAndVerifyResult(container, 5, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -268,15 +268,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 6, 'o');
-      clickButtonAndVerifyResult(container, 1, 'x');
-      clickButtonAndVerifyResult(container, 8, 'o');
-      clickButtonAndVerifyResult(container, 4, 'x');
-      clickButtonAndVerifyResult(container, 7, 'o');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 6, 'O');
+      clickButtonAndVerifyResult(container, 1, 'X');
+      clickButtonAndVerifyResult(container, 8, 'O');
+      clickButtonAndVerifyResult(container, 4, 'X');
+      clickButtonAndVerifyResult(container, 7, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -286,15 +286,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 4, 'x');
-      clickButtonAndVerifyResult(container, 3, 'o');
-      clickButtonAndVerifyResult(container, 8, 'x');
-      clickButtonAndVerifyResult(container, 0, 'o');
-      clickButtonAndVerifyResult(container, 1, 'x');
-      clickButtonAndVerifyResult(container, 6, 'o');
+      clickButtonAndVerifyResult(container, 4, 'X');
+      clickButtonAndVerifyResult(container, 3, 'O');
+      clickButtonAndVerifyResult(container, 8, 'X');
+      clickButtonAndVerifyResult(container, 0, 'O');
+      clickButtonAndVerifyResult(container, 1, 'X');
+      clickButtonAndVerifyResult(container, 6, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -303,15 +303,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 3, 'x');
-      clickButtonAndVerifyResult(container, 4, 'o');
-      clickButtonAndVerifyResult(container, 6, 'x');
-      clickButtonAndVerifyResult(container, 1, 'o');
-      clickButtonAndVerifyResult(container, 5, 'x');
-      clickButtonAndVerifyResult(container, 7, 'o');
+      clickButtonAndVerifyResult(container, 3, 'X');
+      clickButtonAndVerifyResult(container, 4, 'O');
+      clickButtonAndVerifyResult(container, 6, 'X');
+      clickButtonAndVerifyResult(container, 1, 'O');
+      clickButtonAndVerifyResult(container, 5, 'X');
+      clickButtonAndVerifyResult(container, 7, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -320,15 +320,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 1, 'x');
-      clickButtonAndVerifyResult(container, 2, 'o');
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 5, 'o');
-      clickButtonAndVerifyResult(container, 7, 'x');
-      clickButtonAndVerifyResult(container, 8, 'o');
+      clickButtonAndVerifyResult(container, 1, 'X');
+      clickButtonAndVerifyResult(container, 2, 'O');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 5, 'O');
+      clickButtonAndVerifyResult(container, 7, 'X');
+      clickButtonAndVerifyResult(container, 8, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -338,15 +338,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 1, 'x');
-      clickButtonAndVerifyResult(container, 0, 'o');
-      clickButtonAndVerifyResult(container, 3, 'x');
-      clickButtonAndVerifyResult(container, 4, 'o');
-      clickButtonAndVerifyResult(container, 7, 'x');
-      clickButtonAndVerifyResult(container, 8, 'o');
+      clickButtonAndVerifyResult(container, 1, 'X');
+      clickButtonAndVerifyResult(container, 0, 'O');
+      clickButtonAndVerifyResult(container, 3, 'X');
+      clickButtonAndVerifyResult(container, 4, 'O');
+      clickButtonAndVerifyResult(container, 7, 'X');
+      clickButtonAndVerifyResult(container, 8, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -355,15 +355,15 @@ describe('App', () => {
       const { container } = render(<App />);
 
       // Act
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 2, 'o');
-      clickButtonAndVerifyResult(container, 3, 'x');
-      clickButtonAndVerifyResult(container, 4, 'o');
-      clickButtonAndVerifyResult(container, 7, 'x');
-      clickButtonAndVerifyResult(container, 6, 'o');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 2, 'O');
+      clickButtonAndVerifyResult(container, 3, 'X');
+      clickButtonAndVerifyResult(container, 4, 'O');
+      clickButtonAndVerifyResult(container, 7, 'X');
+      clickButtonAndVerifyResult(container, 6, 'O');
 
       // Assert
-      const winnerScreen = screen.queryByText('Winner is o');
+      const winnerScreen = screen.queryByText('Winner is O');
       expect(winnerScreen).not.toBeNull();
       expect(winnerScreen).toBeInTheDocument();
     });
@@ -383,8 +383,8 @@ describe('App', () => {
     test('the button resets the game', () => {
       // Arrange - click on some squares
       const { container } = render(<App />);
-      clickButtonAndVerifyResult(container, 0, 'x');
-      clickButtonAndVerifyResult(container, 2, 'o');
+      clickButtonAndVerifyResult(container, 0, 'X');
+      clickButtonAndVerifyResult(container, 2, 'O');
 
       // Find the reset button
       const resetButton = screen.queryByText(/[Rr]eset\s+[Gg]ame/);
@@ -394,10 +394,10 @@ describe('App', () => {
 
       // Assert - There should no longer be Xs or Os
       // on the board.
-      const xSquare = screen.queryByText('x');
+      const xSquare = screen.queryByText('X');
       expect(xSquare).toBeNull();
 
-      const oSquare = screen.queryByText('o');
+      const oSquare = screen.queryByText('O');
       expect(oSquare).toBeNull();
     });
   });

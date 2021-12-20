@@ -4,8 +4,9 @@ import './App.css';
 
 import Board from './components/Board';
 
-const playerOne = 'x';
-const playerTwo = 'o';
+const playerOne = 'X';
+const playerTwo = 'O';
+const winnerInitial = 'TBD';
 
 const generateSquares = () => {
   const squares = [];
@@ -32,7 +33,7 @@ const App = () => {
   const [squares, setSquares] = useState(generateSquares());
   const [player, setPlayer] = useState(playerOne);
   const [isGameOver, setGameStatus] = useState(false);
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState(winnerInitial);
 
   const updateOnClick = (updatedSquare) => {
     const squaresData = squares.map((row) => {
@@ -50,6 +51,16 @@ const App = () => {
         }
       });
     });
+  };
+
+  const renderPlayerTurn = () => {
+    let playerTurn = '';
+    if (winner === winnerInitial) {
+      playerTurn = `It's ${player}'s turn!`;
+    } else {
+      playerTurn = `🎉 Way to go ${winner} 🥳`;
+    }
+    return playerTurn;
   };
 
   const checkForWinner = () => {
@@ -88,13 +99,12 @@ const App = () => {
     ) {
       return squares[0][2].value;
     }
-
-    return null;
+    return '';
   };
 
   const resetGame = () => {
     setSquares(generateSquares());
-    setWinner('');
+    setWinner(winnerInitial);
     setGameStatus(false);
     setPlayer(playerOne);
   };
@@ -104,7 +114,7 @@ const App = () => {
       <header className="App-header">
         <h1>React Tic Tac Toe</h1>
         <h2>Winner is {winner}</h2>
-        <h2>It&apos;s {player}&apos;s turn! </h2>
+        <h2>{renderPlayerTurn()}</h2>
         <button onClick={resetGame}>Reset Game</button>
       </header>
       <main>
